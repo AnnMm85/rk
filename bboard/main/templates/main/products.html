@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block title %} Товары {% endblock %}
+
+{% block content %}
+<form method="get">
+    {{search_form.as_p}}
+    <button type="submit" class="btn btn-info" > Поиск </button>
+</form>
+
+{% if products %}
+<div class="blog">
+    <div class="container">
+        <div class="row">
+           {% for product in products %}
+            <div class="col-md-4 col-lg-4 col-sm-12">
+                <div class="card">
+                    <div class="card-img">
+                        {% if product.photo %}
+                        <img align="center" src="{{product.photo.url}}" class="img-fluid" alt="Фото_товара">
+                        {% else %}
+                        <p>У товара нет фото</p>
+                        {% endif %}
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">{{product.name}}</h4>
+                        <p class="card-text">{{product.desc}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{% url 'main:product_detail' product.pk %}">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% else %}
+<p>Товара нет</p>
+{% endif %}
+{% endblock %}

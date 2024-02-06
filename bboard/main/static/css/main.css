@@ -1,0 +1,36 @@
+.header{
+background:red;
+margin:20px;
+}
+.navbar{
+background:black;
+}
+.header a{
+color: white;
+cursor: pointer;
+}
+.header a:hover{
+color: pink;
+}
+
+.navbar-collapse{
+justify-content: flex-end;
+}
+
+.main{
+margin-top:100px;
+}
+
+.row{
+gap:20px;
+}
+.about{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+    margin:20px;
+    padding:20px;
+    border: 2px solid black;
+}

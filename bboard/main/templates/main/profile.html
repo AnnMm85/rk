@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block title %} Профиль {% endblock %}
+
+{% block content %}
+<div class="about">
+    <div class="av">
+        <img class="av-img" src="{{user.avatar.url}}" width="200px">
+    </div>
+    <h3> Имя пользователя - {{user.username}} </h3>
+    <h3> Почта - {{user.email}} </h3>
+</div>
+
+{% if baskets %}
+<div class="blog">
+    <div class="container">
+        <div class="row"> {% for basket in baskets %}
+            <div class="col-md-4 col-lg-4 col-sm-12">
+                <div class="card">
+                    <div class="card-img">
+                        <img align="center" src="{{basket.product.photo.url}}" class="img-fluid" alt="Фото_товара">
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">{{basket.product.name}}</h4>
+                        <p class="card-text">{{basket.product.desc}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% else %}
+<p>Товара нет</p>
+{% endif %}
+{% endblock %}
